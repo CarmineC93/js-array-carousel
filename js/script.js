@@ -25,11 +25,36 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
     items[position].classList.add("active");
 
 
+//assegnamo all'evento click delle frecce lo spostamento della classe active da un elemento-immagine all'altro
+    //Click avanti NEXT
+    //salviamo l'elemento freccia in una variabile
+    const nextArrw = document.querySelector(".next")
+    //assegnamo all'elemento freccia la funzione che si attiverà ad un evento(click)
+    nextArrw.addEventListener("click", function(){
+        //creiamo un controllo che impedisca di reiterare la funzione quando si raggiunga l'indice oltre il quale l'array finisce
+        if(position < items.length -1){ //-1 perchè l'incremento va fermato al penultimo elemento, altrimenti ultimo+1 sforiamo l'array
+            //al click rimuoviamo la classe active dall'attuale elemento visibile
+            items[position].classList.remove("active");
+            //incrementiamo di 1 l'indice per passare al successivo elemento-immagine
+            position++;
+            //aggiungiamo la classe active al nuovo attuale elemento (con indice maggiorato di 1)
+            items[position].classList.add("active");
+        }
+    })
+
+    //Click indietro PREV
+    //salviamo l'elemento freccia in una variabile
+    const prevArrw = document.querySelector(".prev")
+
+    prevArrw.addEventListener("click", function(){
+        if(position > 0){ //non >= perchè il decremento va fermato prima dello zero altrimenti con 0-1 sforiamo l'array.
+            items[position].classList.remove("active");
+            position--;
+            items[position].classList.add("active");
+        }
+    })
 
 
-// **MILESTONE 3**
-// Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata 
-//al posto della precedente.
 
 // **BONUS 1:**
 // Aggiungere il **ciclo infinito** del carosello. Ovvero se è attiva la prima immagine e l'utente 
