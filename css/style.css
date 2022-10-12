@@ -1,0 +1,72 @@
+/* RESET */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* BODY */
+
+.container{
+    position: relative;
+    height: 100vh;
+    /* DEBUG */
+    background-color: pink;
+}
+
+.slider{
+    position: absolute;
+    width: 50vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* DEBUG */
+}
+
+.items.container{
+    height: 100%;
+    /* DEBUG */
+    background-color: red;
+}
+
+.item{
+    height: 50vh;
+    width: 100%;
+    /* display: none;     */
+    /* DEBUG */
+    background-color: yellow;
+}
+
+.item img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.prev, .next{
+    position: absolute;
+    left: 50%;
+    background-color: rgba(240, 240, 240, 0.5);
+    text-align: center;
+    cursor: pointer;
+    transform: translateX(-50%);
+        /* DEBUG */
+        background-color: grey;
+}
+
+.prev{
+    top: 10px;
+}
+
+.next{
+    bottom: 10px;
+}
+
+.prev:hover,
+.next:hover{
+    background-color:  rgba(240, 240, 240, 1);
+}
