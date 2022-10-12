@@ -17,16 +17,12 @@ img{
 }
 
 .slider{
+    width: 70vw;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-
-}
-
-.items.container{
-    height: 100%;
 }
 
 .item{
@@ -36,8 +32,8 @@ img{
 }
 
 .item>img{
-    height: 100%;
-    width: 40vw;
+    height: 70vh;
+    width: calc(70vw - 150px);
     object-fit: cover;
 }
 
@@ -78,11 +74,12 @@ img{
 .thumbnail{
     position: relative;
     max-width: 150px ;
+    height: 100%;
     background-color: pink;
 }
 
 .thumb{
-    height: calc(100% / 5);
+    height: calc(70vh / 5);
     opacity: 0.5;
     cursor: pointer;
 }
