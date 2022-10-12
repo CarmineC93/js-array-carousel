@@ -12,7 +12,10 @@
         const box =`<div class="item">
                         <img src="${picture}" alt="landscape">
                     </div>`;
+        itemsContainer.innerHTML += box;
     }
+
+//creando
 
 
 

@@ -70,3 +70,7 @@ img{
 .next:hover{
     background-color:  rgba(240, 240, 240, 1);
 }
+
+.active{
+    display: block;
+}
