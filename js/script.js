@@ -15,14 +15,28 @@
         itemsContainer.innerHTML += box;
     }
 
+    //**BONUS 2:** usiamo lo stesso array per aggiungere elementi alla thumbnail laterale
+    const preview = document.querySelector(".preview")
+    for(let i = 0; i< sliderImages.length; i++){
+        const thumbPic = sliderImages[i];
+        const thumbBox =`<img class=thumb src="${thumbPic}" alt="landscape">`;
+        preview.innerHTML += thumbBox;
+    }
+
 /*essendo tutti gli elementi nasconti da display:none; in CSS, creo un'altra' classe in CSS che abbia display block, in modo 
 da rendere visibile l'elemento-immagine che ha quella classe*/
     //estraiamo più elementi contemporaneamente dalla pagina e li salviamo in una variabile come fosse un array(HTMLCollection si comporta in modo simile)
     const items = document.getElementsByClassName("item");
+    // **BONUS 2:** estraiamo più elementi 
+    const thumbs = document.getElementsByClassName("thumb");
+
+
     //creiamo una variabile che tiene conto dell'indice attuale, quindi inizialmente di valore 0
     let position = 0;
     //assegnamo al primo elemento-immagine (di indice 0) la classe che lo renderà visibile
     items[position].classList.add("active");
+    // **BONUS 2:**
+    thumbs[position].classList.add("thumb-active");
 
     
 
@@ -42,11 +56,18 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
         if(position < items.length -1){ //-1 perchè l'incremento va fermato al penultimo elemento, altrimenti ultimo+1 sforiamo l'array
             //al click rimuoviamo la classe active dall'attuale elemento visibile
             items[position].classList.remove("active");
+             // **BONUS 2:**
+            thumbs[position].classList.remove("thumb-active");
+
             //incrementiamo di 1 l'indice per passare al successivo elemento-immagine
             position++;
             //aggiungiamo la classe active al nuovo attuale elemento (con indice maggiorato di 1)
             items[position].classList.add("active");
-            
+             // **BONUS 2:**
+            thumbs[position].classList.add("thumb-active");
+
+
+
             /*
             //al click in avanti riappare la freccia PREV, che al caricamento della pagina giustamente è nascosta. 
             prevArrw.classList.remove("hidden");
@@ -59,8 +80,15 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
         } //Altrimenti l'array riparte dalla prima immagine
         else { 
             items[position].classList.remove("active");
+             // **BONUS 2:**
+            thumbs[position].classList.remove("thumb-active")
+
             position = 0;
+
             items[position].classList.add("active");
+             // **BONUS 2:**
+            thumbs[position].classList.add("thumb-active")
+
         }
     })
 
@@ -70,8 +98,16 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
     prevArrw.addEventListener("click", function(){
         if(position > 0){ //non >= perchè il decremento va fermato prima dello zero altrimenti con 0-1 sforiamo l'array.
             items[position].classList.remove("active");
+             // **BONUS 2:**
+            thumbs[position].classList.remove("thumb-active");
+
+
             position--;
+            
             items[position].classList.add("active");
+            // **BONUS 2:**
+            thumbs[position].classList.add("thumb-active");
+
             
             /*
             //riappare la freccia NEXT quando clicco PREV non essendo più sull'ultimo elemento
@@ -85,25 +121,18 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
         } //altrimenti l'array riparte dall'ultima immagine
         else {
                 items[position].classList.remove("active");
+                 // **BONUS 2:**
+                thumbs[position].classList.remove("thumb-active")
+
+
                 position = items.length-1;
+                
                 items[position].classList.add("active");
+                 // **BONUS 2:**
+                thumbs[position].classList.add("thumb-active")
+
             }
     })
 
 
 
-
-
-
-
-// **BONUS 2:**
-// Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva, 
-//come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura, 
-//tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato.
-// Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
-
-
-// **Consigli del giorno:**
-// 1. Costruiamo del carosello una versione statica contenente solamente un'immagine. Di questa versione statica al momento opportuno commenteremo (oscureremo) alcuni elementi per poterli riprodurre dinamicamente in js. Potremo quindi usarli come "template".
-// 2. Scriviamo sempre prima per punti il nostro algoritmo in italiano per capire cosa vogliamo fare
-// 3. Al momento giusto (ihihhi starà a voi capire quale) rispondete a questa domanda: "Quanti cicli servono?"
