@@ -18,27 +18,27 @@ img{
 
 .slider{
     position: absolute;
-    width: 50vw;
+    width: 70vw;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-
+    display: flex;
 }
 
 .items.container{
     height: 100%;
-
+    width: calc(100% - 200px);
 }
 
 .item{
     height: 50vh;
     width: 100%;
     display: none; 
-    }
+}
 
-.item img{
+.item>img{
     height: 100%;
-    width: 100%;
+    width: 700px;
     object-fit: cover;
 }
 
@@ -74,4 +74,17 @@ img{
 
 .hidden {
     display: none;
+}
+
+.thumbnail{
+    position: relative;
+    width: 200px ;
+    background-color: pink;
+}
+
+
+.preview{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
