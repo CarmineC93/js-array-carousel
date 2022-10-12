@@ -32,7 +32,7 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
     const nextArrw = document.querySelector(".next")
 
     //al caricamento della pagina la freccia PREV non serve, non potendo andare oltre la prima foto
-    prevArrw.classList.add("hidden");
+    //prevArrw.classList.add("hidden");
 
 
     //Click avanti NEXT
@@ -47,13 +47,20 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
             //aggiungiamo la classe active al nuovo attuale elemento (con indice maggiorato di 1)
             items[position].classList.add("active");
             
+            /*
             //al click in avanti riappare la freccia PREV, che al caricamento della pagina giustamente è nascosta. 
             prevArrw.classList.remove("hidden");
 
             //quando arrivo all'ultimo elemento la freccia NEXT viene nascosta, riapparirà quando clicco PREV
             if(position === (items.length -1)){
-                nextArrw.classList.add("hidden");
-            }
+               nextArrw.classList.add("hidden");
+            } 
+            */
+        } //Altrimenti l'array riparte 
+        else { 
+            items[position].classList.remove("active");
+            position = 0;
+            items[position].classList.add("active");
         }
     })
 
@@ -66,14 +73,19 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
             position--;
             items[position].classList.add("active");
             
+            /*
             //riappare la freccia NEXT quando clicco PREV non essendo più sull'ultimo elemento
             nextArrw.classList.remove("hidden");
-
             //al click se l'attuale posizione è 0(cioè primo elemento-immagine) non ha senso la freccia indietro e la nascondiamo
             if(position === 0){
                 prevArrw.classList.add("hidden");
             }
-        }
+            */
+        } else {
+                items[position].classList.remove("active");
+                position = items.length-1;
+                items[position].classList.add("active");
+            }
     })
 
 
