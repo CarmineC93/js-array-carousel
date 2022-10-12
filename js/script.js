@@ -24,11 +24,18 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
     //assegnamo al primo elemento-immagine (di indice 0) la classe che lo renderà visibile
     items[position].classList.add("active");
 
+    
 
 //assegnamo all'evento click delle frecce lo spostamento della classe active da un elemento-immagine all'altro
-    //Click avanti NEXT
-    //salviamo l'elemento freccia in una variabile
+    //salviamo gli elementi freccia in variabili
+    const prevArrw = document.querySelector(".prev")
     const nextArrw = document.querySelector(".next")
+
+    //al caricamento della pagina la freccia PREV non serve, non potendo andare oltre la prima foto
+    prevArrw.classList.add("hidden");
+
+
+    //Click avanti NEXT
     //assegnamo all'elemento freccia la funzione che si attiverà ad un evento(click)
     nextArrw.addEventListener("click", function(){
         //creiamo un controllo che impedisca di reiterare la funzione quando si raggiunga l'indice oltre il quale l'array finisce
@@ -39,20 +46,38 @@ da rendere visibile l'elemento-immagine che ha quella classe*/
             position++;
             //aggiungiamo la classe active al nuovo attuale elemento (con indice maggiorato di 1)
             items[position].classList.add("active");
+            
+            //al click in avanti riappare la freccia PREV, che al caricamento della pagina giustamente è nascosta. 
+            prevArrw.classList.remove("hidden");
+
+            //quando arrivo all'ultimo elemento la freccia NEXT viene nascosta, riapparirà quando clicco PREV
+            if(position === (items.length -1)){
+                nextArrw.classList.add("hidden");
+            }
         }
     })
 
     //Click indietro PREV
-    //salviamo l'elemento freccia in una variabile
-    const prevArrw = document.querySelector(".prev")
+
 
     prevArrw.addEventListener("click", function(){
         if(position > 0){ //non >= perchè il decremento va fermato prima dello zero altrimenti con 0-1 sforiamo l'array.
             items[position].classList.remove("active");
             position--;
             items[position].classList.add("active");
+            
+            //riappare la freccia NEXT quando clicco PREV non essendo più sull'ultimo elemento
+            nextArrw.classList.remove("hidden");
+
+            //al click se l'attuale posizione è 0(cioè primo elemento-immagine) non ha senso la freccia indietro e la nascondiamo
+            if(position === 0){
+                prevArrw.classList.add("hidden");
+            }
         }
     })
+
+
+
 
 
 
