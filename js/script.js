@@ -15,16 +15,17 @@
         itemsContainer.innerHTML += box;
     }
 
-//creando
+/*essendo tutti gli elementi nasconti da display:none; in CSS, creo un'altra' classe in CSS che abbia display block, in modo 
+da rendere visibile l'elemento-immagine che ha quella classe*/
+    //estraiamo più elementi contemporaneamente dalla pagina e li salviamo in una variabile come fosse un array(HTMLCollection si comporta in modo simile)
+    const items = document.getElementsByClassName("item");
+    //creiamo una variabile che tiene conto dell'indice attuale, quindi inizialmente di valore 0
+    let position = 0;
+    //assegnamo al primo elemento-immagine (di indice 0) la classe che lo renderà visibile
+    items[position].classList.add("active");
 
 
 
-// **MILESTONE 2**
-// Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell'array 
-//fornito e un semplice ciclo for che concatena un template literal.
-// Tutte le immagini saranno nascoste, tranne la prima, che avrà una classe specifica che la renderà visibile.
-// Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1, ma costruito dinamicamente 
-//attraverso JavaScript.
 
 // **MILESTONE 3**
 // Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata 

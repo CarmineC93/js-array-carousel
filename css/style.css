@@ -36,7 +36,7 @@ img{
 .item{
     height: 50vh;
     width: 100%;
-    /* display: none;     */
+    display: none;    
     /* DEBUG */
     background-color: yellow;
 }
